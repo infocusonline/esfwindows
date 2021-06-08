@@ -27,7 +27,6 @@ export const query = graphql`
     }
   }
 `
-
 const Blog = ({ data }) => {
   const post = data.nodeBlog
   const image =

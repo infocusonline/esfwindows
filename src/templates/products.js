@@ -32,9 +32,7 @@ const Product = ({ data }) => {
       {image ? (
         <div>
           <Img fluid={image} />
-
           <h1>products</h1>
-
           <Form />
         </div>
       ) : null}
