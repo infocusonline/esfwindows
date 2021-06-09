@@ -40,6 +40,7 @@ module.exports.onCreateNode = ({ node, actions }) => {
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
+  // blog is portfolio
   const portfolioTemplate = path.resolve('./src/templates/portfolio.js')
   // creating product template
   const productsTemplate = path.resolve('./src/templates/products.js')
@@ -122,6 +123,17 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const res = await graphql(`
     query {
       allNodeProducts {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeBlog {
         edges {
           node {
             id
@@ -382,6 +394,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   // destructuring the queries
   const {
     allNodeProducts,
+    allNodeBlog,
     allNodeMaterials,
     allNodeCustom,
     allNodeAccessories,
@@ -404,7 +417,6 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeAluCladDoor,
     allNodeSteelAndSpecialityMetals,
   } = res.data
-
   // create Products page
   allNodeProducts.edges.forEach(({ node }) => {
     createPage({
@@ -415,16 +427,26 @@ module.exports.createPages = async ({ graphql, actions }) => {
       },
     })
   }),
-    // creating materials pages
-    allNodeMaterials.edges.forEach(({ node }) => {
+    allNodeBlog.edges.forEach(({ node }) => {
       createPage({
-        component: materialTemplate,
-        path: `/materials/${node.fields.slug}`,
+        component: portfolioTemplate,
+        path: `/portfolio/${node.fields.slug}`,
         context: {
           slug: node.fields.slug,
         },
       })
-    }),
+    })
+
+  // creating materials pages
+  allNodeMaterials.edges.forEach(({ node }) => {
+    createPage({
+      component: materialTemplate,
+      path: `/materials/${node.fields.slug}`,
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  }),
     // creating custom pages
     allNodeCustom.edges.forEach(({ node }) => {
       createPage({
