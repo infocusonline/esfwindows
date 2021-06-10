@@ -116,8 +116,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   const alucladDoorTemplate = path.resolve('./src/templates/alu-clad-doors.js')
 
-  const steelAndSpecialtyMetalsTemplate = path.resolve(
-    './src/templates/steel-and-specialty-metals.js'
+  const steelSpecialtyMetalsDoor = path.resolve(
+    './src/templates/steel-and-specialty-metals/doors.js'
   )
 
   const res = await graphql(`
@@ -374,7 +374,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      allNodeSteelAndSpecialityMetals {
+      allNodeSteelSpecialtyMetalsDoor {
         edges {
           node {
             id
@@ -415,7 +415,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeMaterialsFiberglass,
     allNodeWoodWindows,
     allNodeAluCladDoor,
-    allNodeSteelAndSpecialityMetals,
+    allNodeSteelSpecialtyMetalsDoor,
+    // allNodeSteelAndSpecialityMetals,
   } = res.data
   // create Products page
   allNodeProducts.edges.forEach(({ node }) => {
@@ -619,10 +620,10 @@ module.exports.createPages = async ({ graphql, actions }) => {
         },
       })
     }),
-    allNodeSteelAndSpecialityMetals.edges.forEach(({ node }) => {
+    allNodeSteelSpecialtyMetalsDoor.edges.forEach(({ node }) => {
       createPage({
-        component: steelAndSpecialtyMetalsTemplate,
-        path: `/steel-and-specialty-metals/${node.fields.slug}`,
+        component: steelSpecialtyMetalsDoor,
+        path: `/steel-and-specialty-metals-doors/doors/${node.fields.slug}`,
         context: {
           slug: node.fields.slug,
         },

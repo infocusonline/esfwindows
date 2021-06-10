@@ -1,13 +1,34 @@
 import React from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql, useStaticQuery, Link } from 'gatsby'
 import styled from 'styled-components'
-import Layout from '../components/Layout'
+import Img from 'gatsby-image'
+import Layout from '../../components/Layout'
 
-const SteelSpecialtyMetals = () => {
+const Doors = () => {
   const data = useStaticQuery(graphql`
     query {
-      allNodeSteelAndSpecialityMetals(sort: { fields: title, order: DESC }) {
+      # This is steel and specialty metals WINDOW node in drupal
+      door: nodeSteelAndSpecialityMetals(
+        id: { eq: "d7683551-bb95-5be9-857b-76ecffebdf33" }
+      ) {
+        id
+        title
+        body {
+          value
+        }
+        relationships {
+          field_steel_and_special_metal {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1080, maxHeight: 450) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+      allNodeSteelSpecialtyMetalsDoor {
         edges {
           node {
             id
@@ -15,11 +36,14 @@ const SteelSpecialtyMetals = () => {
             fields {
               slug
             }
+            body {
+              value
+            }
             relationships {
-              field_steel_and_special_metal {
+              field_steel_specialty_metals_doo {
                 localFile {
                   childImageSharp {
-                    fixed(height: 360, width: 360) {
+                    fixed(width: 300, height: 300) {
                       ...GatsbyImageSharpFixed
                     }
                   }
@@ -31,20 +55,30 @@ const SteelSpecialtyMetals = () => {
       }
     }
   `)
-  console.log(data, 'steela nd specialty metals')
 
+  const heroImage =
+    data.door.relationships.field_steel_and_special_metal[0]?.localFile
+      ?.childImageSharp.fluid
   return (
     <Layout>
-      <h1>steel</h1>
+      <Container>
+        <h1>{data.door.title}</h1>
+        <ContainerImg fluid={heroImage} />
+      </Container>
+      <About>
+        <Bio dangerouslySetInnerHTML={{ __html: data.door.body.value }}></Bio>
+      </About>
 
       <FlexContainer>
-        {data.allNodeSteelAndSpecialityMetals.edges.map(edge => {
+        {data.allNodeSteelSpecialtyMetalsDoor.edges.map(edge => {
           const images =
-            edge.node.relationships.field_steel_and_special_metal[0]?.localFile
-              ?.childImageSharp.fixed
+            edge.node.relationships.field_steel_specialty_metals_doo[0]
+              ?.localFile?.childImageSharp.fixed
           return (
             <li>
-              <Link to={`steel-and-specialty-metals/${edge.node.fields.slug}`}>
+              <Link
+                to={`/steel-and-specialty-metals-doors/doors/${edge.node.fields.slug}`}
+              >
                 <SetImg fixed={images} />
                 <h2>{edge.node.title}</h2>
               </Link>
@@ -66,6 +100,7 @@ const About = styled.div`
 
     text-align: center;
   }
+
   p {
     line-height: 1.6;
     text-align: center;
@@ -140,4 +175,4 @@ const SetImg = styled(Img)`
   /* border: 1px solid red; */
 `
 
-export default SteelSpecialtyMetals
+export default Doors
