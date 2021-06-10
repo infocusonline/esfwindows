@@ -623,7 +623,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeSteelSpecialtyMetalsDoor.edges.forEach(({ node }) => {
       createPage({
         component: steelSpecialtyMetalsDoor,
-        path: `/steel-and-specialty-metals-doors/doors/${node.fields.slug}`,
+        path: `/steel-and-specialty-metals/doors/${node.fields.slug}`,
         context: {
           slug: node.fields.slug,
         },

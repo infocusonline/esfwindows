@@ -77,7 +77,7 @@ const Doors = () => {
           return (
             <li>
               <Link
-                to={`/steel-and-specialty-metals-doors/doors/${edge.node.fields.slug}`}
+                to={`/steel-and-specialty-metals/doors/${edge.node.fields.slug}`}
               >
                 <SetImg fixed={images} />
                 <h2>{edge.node.title}</h2>

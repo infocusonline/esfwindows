@@ -31,7 +31,7 @@ export const query = graphql`
 `
 
 const SteelSpecialtyDoor = ({ data }) => {
-  //   console.log(data, 'door data')
+  console.log(data, 'door data')
   return (
     <Layout>
       <h1>template</h1>
