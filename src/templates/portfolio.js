@@ -41,7 +41,7 @@ const Blog = ({ data }) => {
         {image ? (
           <div>
             <Img fluid={image} />
-            <div dangerouslySetInnerHTML={{ __html: post.body.value }}></div>
+            <p dangerouslySetInnerHTML={{ __html: post.body.value }}></p>
           </div>
         ) : null}
       </PortfolioLayout>
@@ -59,7 +59,6 @@ const PortfolioLayout = styled.div`
 
   p {
     line-height: 1.5;
-    padding-top: 40px;
     margin-bottom: 30px;
   }
 `
