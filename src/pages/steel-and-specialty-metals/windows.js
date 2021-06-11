@@ -80,7 +80,7 @@ const Windows = () => {
             return (
               <li>
                 <Link
-                  to={`steel-and-specialty-metals/${edge.node.fields.slug}`}
+                  to={`steel-and-specialty-metals/windows/${edge.node.fields.slug}`}
                 >
                   <SetImg fixed={images} />
                   <h2>{edge.node.title}</h2>

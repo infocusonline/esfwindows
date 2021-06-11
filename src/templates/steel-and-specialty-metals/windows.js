@@ -6,7 +6,7 @@ import Img from 'gatsby-image'
 
 export const query = graphql`
   query($slug: String!) {
-    nodeSteelSpecialtyMetalsDoor(fields: { slug: { eq: $slug } }) {
+    nodeSteelSpecialtyMetalsWindow(fields: { slug: { eq: $slug } }) {
       id
       title
       body {
@@ -16,7 +16,7 @@ export const query = graphql`
         slug
       }
       relationships {
-        field_steel_specialty_metals_doo {
+        field_steel_specialty_metals_win {
           localFile {
             childImageSharp {
               fluid(maxWidth: 1600, maxHeight: 700) {
@@ -31,11 +31,11 @@ export const query = graphql`
 `
 
 const SteelSpecialtyDoor = ({ data }) => {
-  const body = data.nodeSteelSpecialtyMetalsDoor.body.value
+  const body = data.nodeSteelSpecialtyMetalsWindow.body.value
   return (
     <Layout>
       <Container>
-        <h2>{data.nodeSteelSpecialtyMetalsDoor.title}</h2>
+        <h2>{data.nodeSteelSpecialtyMetalsWindow.title}</h2>
 
         <BodyContainer
           dangerouslySetInnerHTML={{ __html: body }}
