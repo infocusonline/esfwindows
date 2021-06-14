@@ -75,11 +75,11 @@ const Product = () => {
             edge.node.relationships.field_products_images[0]?.localFile
               ?.childImageSharp.fixed
 
-          if (links.props.to === '/doors') {
+          if (links.props.to === '/curtain-walls') {
             return (
               <li>
                 {productImages ? (
-                  <Link to="/materials">
+                  <Link to='/curtain-wall'>
                     <SetImg fixed={productImages} />
                     <h2>{edge.node.title}</h2>
                   </Link>
@@ -87,49 +87,11 @@ const Product = () => {
               </li>
             )
           }
-          if (links.props.to === '/windows') {
-            return (
-              <li>
-                {productImages ? (
-                  <Link to="/materials">
-                    <SetImg fixed={productImages} />
-                    <h2>{edge.node.title}</h2>
-                  </Link>
-                ) : null}
-              </li>
-            )
-          }
-          if (links.props.to === '/sliders') {
-            return (
-              <li>
-                {productImages ? (
-                  <Link to="/materials">
-                    <SetImg fixed={productImages} />
-                    <h2>{edge.node.title}</h2>
-                  </Link>
-                ) : null}
-              </li>
-            )
-          }
-
-          if (links.props.to === '/curtain-wall') {
-            return (
-              <li>
-                {productImages ? (
-                  <Link to="/curtain-wall">
-                    <SetImg fixed={productImages} />
-                    <h2>{edge.node.title}</h2>
-                  </Link>
-                ) : null}
-              </li>
-            )
-          }
-
           if (links.props.to === '/accessories') {
             return (
               <li>
                 {productImages ? (
-                  <Link to="/accessories">
+                  <Link to='/curtain-wall'>
                     <SetImg fixed={productImages} />
                     <h2>{edge.node.title}</h2>
                   </Link>
@@ -141,7 +103,7 @@ const Product = () => {
           return (
             <div>
               {productImages ? (
-                <Link to="/curtain-wall">
+                <Link to='/curtain-wall'>
                   <SetImg fixed={productImages} />
                   <h2>{edge.node.title}</h2>
                 </Link>

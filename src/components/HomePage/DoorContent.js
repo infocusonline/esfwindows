@@ -50,7 +50,7 @@ const DoorContent = () => {
           <h1>{title}</h1>
           <div dangerouslySetInnerHTML={{ __html: body }}></div>
           <ButtonCenteredFlex>
-            <StyledLink to={`products/wood-products`} key={data.doorLink.id}>
+            <StyledLink to={`/products/wood-products`} key={data.doorLink.id}>
               Learn More
             </StyledLink>
           </ButtonCenteredFlex>

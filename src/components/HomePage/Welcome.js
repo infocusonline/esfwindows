@@ -1,8 +1,7 @@
 import React from 'react'
-import { graphql, Link, useStaticQuery } from 'gatsby'
+import { graphql,  useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import SlideShow from '../Slideshow/SlideShow'
-import Img from 'gatsby-image'
 
 const Welcome = () => {
   const data = useStaticQuery(graphql`
