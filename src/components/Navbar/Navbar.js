@@ -48,7 +48,7 @@ const Navbar = props => {
             {data.allMenuLinkContentMenuLinkContent.edges.map(edge => {
               return (
                 <li key={edge.node.drupal_id}>
-                  <Link to={edge.node.fields.lowerCaseMenuTitle}>
+                  <Link to={`/${edge.node.fields.lowerCaseMenuTitle}`}>
                     {edge.node.title}
                   </Link>
                 </li>
