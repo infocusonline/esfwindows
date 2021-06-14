@@ -1,12 +1,12 @@
 import React from 'react'
-import Layout from '../../components/Layout'
+import Layout from '../components/Layout'
 import styled from 'styled-components'
+
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 
 export const query = graphql`
   query($slug: String!) {
-    nodeSteelSpecialtyMetalsWindow(fields: { slug: { eq: $slug } }) {
+    nodeSteelAndSpecialityMetals(fields: { slug: { eq: $slug } }) {
       id
       title
       body {
@@ -16,7 +16,7 @@ export const query = graphql`
         slug
       }
       relationships {
-        field_steel_specialty_metals_win {
+        field_steel_and_special_metal {
           localFile {
             childImageSharp {
               fluid(maxWidth: 1600, maxHeight: 700) {
@@ -30,16 +30,20 @@ export const query = graphql`
   }
 `
 
-const SteelSpecialtyDoor = ({ data }) => {
-  const body = data.nodeSteelSpecialtyMetalsWindow.body.value
+const SteelSpecialtyMetals = ({ data }) => {
+  const body = data.nodeSteelAndSpecialityMetals.body?.value
   return (
     <Layout>
       <Container>
-        <h2>{data.nodeSteelSpecialtyMetalsWindow.title}</h2>
+        <h2>{data.nodeSteelAndSpecialityMetals.title}</h2>
 
-        <BodyContainer
-          dangerouslySetInnerHTML={{ __html: body }}
-        ></BodyContainer>
+        {body ? (
+          <BodyContainer
+            dangerouslySetInnerHTML={{ __html: body }}
+          ></BodyContainer>
+        ) : (
+          <p>no bio yet</p>
+        )}
       </Container>
     </Layout>
   )
@@ -61,24 +65,4 @@ const BodyContainer = styled.div`
   margin: 0 auto;
 `
 
-const FlexContainer = styled.div`
-  .flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .flex li {
-    list-style-type: none;
-    margin: 0 auto;
-  }
-
-  p {
-    text-align: center;
-    width: 120px;
-    padding: 10px;
-    margin: 0 auto;
-  }
-`
-
-export default SteelSpecialtyDoor
+export default SteelSpecialtyMetals

@@ -12,48 +12,28 @@ module.exports = {
 
   plugins: [
     {
-      resolve: `gatsby-plugin-google-gtag`,
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        // You can add multiple tracking ids and a pageview event will be fired for all of them.
-        trackingIds: [
-          'G-D256SSTSN7', // Google Analytics / GA
-        ],
-
-        // This object is used for configuration specific to this plugin
-        pluginConfig: {
-          // Puts tracking script in the head instead of the body
-          head: true,
-          // Setting this parameter is also optional
-          // respectDNT: true,
-          // // Avoids sending pageview hits from custom paths
-          // exclude: ['/preview/**', '/do-not-track/me/too/'],
-        },
+        trackingId: 'G-2TGZNHY4DPS',
+        // this option places the tracking script into the head of the DOM
+        head: true,
+        anonymize: true,
       },
+
+      // resolve: `gatsby-plugin-prefetch-google-fonts`,
+      // options: {
+      //   fonts: [
+      //     {
+      //       family: `Lora`,
+      //       subsets: [`latin`],
+      //     },
+      //     {
+      //       family: `Open Sans`,
+      //       variants: [`400`, `700`],
+      //     },
+      //   ],
+      // },
     },
-
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: 'G-2TGZNHY4DPS',
-    //     // this option places the tracking script into the head of the DOM
-    //     head: true,
-    //     anonymize: true,
-    //   },
-
-    // resolve: `gatsby-plugin-prefetch-google-fonts`,
-    // options: {
-    //   fonts: [
-    //     {
-    //       family: `Lora`,
-    //       subsets: [`latin`],
-    //     },
-    //     {
-    //       family: `Open Sans`,
-    //       variants: [`400`, `700`],
-    //     },
-    //   ],
-    // },
-    // },
     `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-source-filesystem',

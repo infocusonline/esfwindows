@@ -27,6 +27,7 @@ export const query = graphql`
     }
   }
 `
+
 const Blog = ({ data }) => {
   const post = data.nodeBlog
   const image =
@@ -41,7 +42,7 @@ const Blog = ({ data }) => {
         {image ? (
           <div>
             <Img fluid={image} />
-            <p dangerouslySetInnerHTML={{ __html: post.body.value }}></p>
+            <div dangerouslySetInnerHTML={{ __html: post.body.value }}></div>
           </div>
         ) : null}
       </PortfolioLayout>
@@ -59,6 +60,7 @@ const PortfolioLayout = styled.div`
 
   p {
     line-height: 1.5;
+    padding-top: 40px;
     margin-bottom: 30px;
   }
 `
