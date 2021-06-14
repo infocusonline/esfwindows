@@ -71,7 +71,7 @@ const SteelSpecialMetals = () => {
               .childImageSharp.fixed
           return (
             <li key={edge.node.id}>
-              <Link to={`steel-and-specialty-metals/${edge.node.fields.slug}`}>
+              <Link to={`/steel-and-specialty-metals/${edge.node.fields.slug}`}>
                 <SetImg fixed={image} />
                 <h2>{edge.node.title}</h2>
               </Link>

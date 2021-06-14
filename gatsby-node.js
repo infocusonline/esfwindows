@@ -40,6 +40,7 @@ module.exports.onCreateNode = ({ node, actions }) => {
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
+  // blog is portfolio
   const portfolioTemplate = path.resolve('./src/templates/portfolio.js')
   // creating product template
   const productsTemplate = path.resolve('./src/templates/products.js')
@@ -115,280 +116,296 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   const alucladDoorTemplate = path.resolve('./src/templates/alu-clad-doors.js')
 
-  const steelAndSpecialtyMetalsTemplate = path.resolve(
-    './src/templates/steel-and-specialty-metals.js'
+  const steelSpecialtyMetalsDoor = path.resolve(
+    './src/templates/steel-and-specialty-metals/doors.js'
+  )
+
+  const steelSpecialtyMetalWindow = path.resolve(
+    './src/templates/steel-and-specialty-metals/windows.js'
   )
 
   const res = await graphql(`
-  query {
-    allNodeBlog {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
+    query {
+      allNodeProducts {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeBlog {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeMaterials {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeCustom {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeAccessories {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeCompany {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeAluOfferWindows {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeAluOfferSlidingDoors {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodePvcOfferSchucoWindows {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodePvcOfferSlidingWindows {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeShutters {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeEntranceDoors {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeAvidoorAvangardeItems {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeAccessoriesAndAdditionsWindow {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeAccessoriesAndAdditionsDoors {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeInnovativeSolutionsSubitems {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeAlucladWoodSubItems {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeCurtainWallTypeAlu {
+        edges {
+          node {
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeCurtainWallTypeWood {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeCurtainWallTypeSteel {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeMaterialsFiberglass {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeWoodWindows {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeAluCladDoor {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeSteelSpecialtyMetalsDoor {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeSteelSpecialtyMetalsWindow {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
           }
         }
       }
     }
-    allNodeProducts {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeMaterials {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeCustom {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeAccessories {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeCompany {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeAluOfferWindows {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeAluOfferSlidingDoors {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodePvcOfferSchucoWindows {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodePvcOfferSlidingWindows {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeShutters {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeEntranceDoors {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeAvidoorAvangardeItems {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeAccessoriesAndAdditionsWindow {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeAccessoriesAndAdditionsDoors {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeInnovativeSolutionsSubitems {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeAlucladWoodSubItems {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeCurtainWallTypeAlu {
-      edges {
-        node {
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeCurtainWallTypeWood {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeCurtainWallTypeSteel {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeMaterialsFiberglass {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeWoodWindows {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeAluCladDoor {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    allNodeSteelAndSpecialityMetals {
-      edges {
-        node {
-          id
-          title
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  }`)
+  `)
   if (res.errors) {
     console.log(res.errors)
   }
-  console.log(JSON.stringify(res, null, 3))
+  // console.log(JSON.stringify(res, null, 3))
   // destructuring the queries
   const {
     allNodeProducts,
@@ -413,9 +430,9 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeMaterialsFiberglass,
     allNodeWoodWindows,
     allNodeAluCladDoor,
-    allNodeSteelAndSpecialityMetals,
+    allNodeSteelSpecialtyMetalsDoor,
+    allNodeSteelSpecialtyMetalsWindow,
   } = res.data
-
   // create Products page
   allNodeProducts.edges.forEach(({ node }) => {
     createPage({
@@ -426,25 +443,26 @@ module.exports.createPages = async ({ graphql, actions }) => {
       },
     })
   }),
-  allNodeBlog.edges.forEach(({ node })=> {
-    createPage({
-      component: portfolioTemplate,
-      path: `/portfolio/${node.fields.slug}`,
-      context: {
-        slug: node.fields.slug
-      }
-    })
-  })
-    // creating materials pages
-    allNodeMaterials.edges.forEach(({ node }) => {
+    allNodeBlog.edges.forEach(({ node }) => {
       createPage({
-        component: materialTemplate,
-        path: `/materials/${node.fields.slug}`,
+        component: portfolioTemplate,
+        path: `/portfolio/${node.fields.slug}`,
         context: {
           slug: node.fields.slug,
         },
       })
-    }),
+    })
+
+  // creating materials pages
+  allNodeMaterials.edges.forEach(({ node }) => {
+    createPage({
+      component: materialTemplate,
+      path: `/materials/${node.fields.slug}`,
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  }),
     // creating custom pages
     allNodeCustom.edges.forEach(({ node }) => {
       createPage({
@@ -617,10 +635,19 @@ module.exports.createPages = async ({ graphql, actions }) => {
         },
       })
     }),
-    allNodeSteelAndSpecialityMetals.edges.forEach(({ node }) => {
+    allNodeSteelSpecialtyMetalsDoor.edges.forEach(({ node }) => {
       createPage({
-        component: steelAndSpecialtyMetalsTemplate,
-        path: `/steel-and-specialty-metals/${node.fields.slug}`,
+        component: steelSpecialtyMetalsDoor,
+        path: `/steel-and-specialty-metals/doors/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    }),
+    allNodeSteelSpecialtyMetalsWindow.edges.forEach(({ node }) => {
+      createPage({
+        component: steelSpecialtyMetalWindow,
+        path: `/steel-and-specialty-metals/windows/${node.fields.slug}`,
         context: {
           slug: node.fields.slug,
         },
