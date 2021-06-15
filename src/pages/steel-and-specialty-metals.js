@@ -7,11 +7,31 @@ import Layout from '../components/Layout'
 const SteelSpecialtyMetals = () => {
   const data = useStaticQuery(graphql`
     query {
+      nodeMaterials(id: { eq: "a9206b99-2e45-50af-b63e-bebd660051a0" }) {
+        title
+        body {
+          value
+        }
+        relationships {
+          field_materials_images {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1200, maxHeight: 900) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
       allNodeSteelAndSpecialityMetals(sort: { fields: title, order: DESC }) {
         edges {
           node {
             id
             title
+            body {
+              value
+            }
             fields {
               slug
             }
@@ -31,20 +51,39 @@ const SteelSpecialtyMetals = () => {
       }
     }
   `)
-  console.log(data, 'steela nd specialty metals')
+  const heroImage =
+    data.nodeMaterials.relationships.field_materials_images?.[0].localFile
+      ?.childImageSharp.fluid
+  const bio = data.nodeMaterials.body.value
 
   return (
     <Layout>
-      <h1>steel</h1>
+      <Container>
+        <ContainerImg fluid={heroImage} />
+      </Container>
+      <About>
+        <h1>{data.nodeMaterials.title}</h1>
+        <p dangerouslySetInnerHTML={{ __html: bio }}></p>
+      </About>
 
       <FlexContainer>
         {data.allNodeSteelAndSpecialityMetals.edges.map(edge => {
+          const links = <Link to={`/${edge.node.fields.slug}`}></Link>
           const images =
             edge.node.relationships.field_steel_and_special_metal[0]?.localFile
               ?.childImageSharp.fixed
+
+          if (links.props.to === '/curtain-wall') {
+            return (
+              <Link to="/curtain-wall/steel">
+                <SetImg fixed={images} />
+                <h2>{edge.node.title}</h2>
+              </Link>
+            )
+          }
           return (
             <li>
-              <Link to={`steel-and-specialty-metals/${edge.node.fields.slug}`}>
+              <Link to={`/steel-and-specialty-metals/${edge.node.fields.slug}`}>
                 <SetImg fixed={images} />
                 <h2>{edge.node.title}</h2>
               </Link>
@@ -61,8 +100,9 @@ const About = styled.div`
   width: 95%;
   padding: 20px;
   h1 {
-    margin-top: 4rem;
-    padding-top: 1.4rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding-top: 1rem;
 
     text-align: center;
   }
