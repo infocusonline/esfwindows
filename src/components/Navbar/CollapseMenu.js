@@ -40,7 +40,7 @@ const CollapseMenu = props => {
           {data.allMenuLinkContentMenuLinkContent.edges.map(edge => (
             <li>
               <Link
-                to={edge.node.fields.lowerCaseMenuTitle}
+                to={`/${edge.node.fields.lowerCaseMenuTitle}`}
                 onClick={props.handleNavbar}
               >
                 {edge.node.title}
