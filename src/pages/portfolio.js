@@ -63,13 +63,13 @@ const Blog = () => {
   )
 }
 
-const BlogPost = styled.ol`
+const BlogPost = styled.ul`
   display: flex;
   justify-content: space-evenly;
   flex-flow: wrap;
   list-style-type: none;
   padding-top: 130px;
-  margin: 0;
+  margin: 2.5rem;
   li {
     margin: 1rem 0;
   }
@@ -86,7 +86,10 @@ const BlogPost = styled.ol`
 
   @media (max-width: 900px) {
     display: flex;
-    margin: 10px auto;
+    li {
+      margin: 10px;
+    }
+
     /* border: 1px solid red; */
   }
 

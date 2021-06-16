@@ -5,6 +5,7 @@ import Img from 'gatsby-image'
 import Head from '../components/HomePage/Head'
 import styled from 'styled-components'
 import { Carousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 export const query = graphql`
   query($slug: String!) {
@@ -37,56 +38,34 @@ const Blog = ({ data }) => {
   // console.log(image, 'hreer is the image')
   return (
     <Layout>
-      <PortfolioLayout>
-        <Carousel
-          autoPlay
-          showThumbs={false}
-          infiniteLoop={true}
-          dynamicHeight={true}
-        >
-          {data.nodeBlog.relationships.field_blog_image.map(image => {
-            const about = data.nodeBlog.body.value
+      <Head title={data.nodeBlog.title} />
+      <Carousel
+        autoPlay
+        showStatus={true}
+        showThumbs={false}
+        showArrows={true}
+        infiniteLoop={true}
+        dynamicHeight={true}
+      >
+        {data.nodeBlog.relationships.field_blog_image.map(image => {
+          const about = data.nodeBlog.body.value
 
-            console.log(image, 'get the image here')
-            const portfolioImages = image.localFile?.childImageSharp?.fluid
-            return (
-              <>
+          // console.log(image, 'get the image here')
+          const portfolioImages = image.localFile?.childImageSharp?.fluid
+          return (
+            <div>
+              {portfolioImages ? (
                 <div>
-                  {portfolioImages ? <Img fluid={portfolioImages} /> : null}
+                  <Img fluid={portfolioImages} />
+                  <p className="legend">{data.nodeBlog.title} </p>
                 </div>
-                <div className="work">
-                  <h3 dangerouslySetInnerHTML={{ __html: about }}></h3>
-                </div>
-              </>
-            )
-          })}
-        </Carousel>
-      </PortfolioLayout>
+              ) : null}
+            </div>
+          )
+        })}
+      </Carousel>
     </Layout>
   )
 }
-
-// //  <Head title={data.nodeBlog.title} />
-// <h1>{data.nodeBlog.title}</h1>
-// {image ? (
-//   <div>
-//     <Img fluid={image} />
-//     <p dangerouslySetInnerHTML={{ __html: post.body.value }}></p>
-//   </div>
-// ) : null}
-
-const PortfolioLayout = styled.div`
-  max-width: 89 0px;
-  /* margin: 0 auto; */
-  padding-top: 100px;
-  h1 {
-    text-align: center;
-  }
-
-  p {
-    line-height: 1.5;
-    margin-top: 30px;
-  }
-`
 
 export default Blog

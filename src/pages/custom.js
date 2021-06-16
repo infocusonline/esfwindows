@@ -44,7 +44,7 @@ const Custom = () => {
           field_basic_page_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 870, maxHeight: 400) {
+                fluid(maxWidth: 1225, maxHeight: 819) {
                   ...GatsbyImageSharpFluid
                 }
               }
