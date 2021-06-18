@@ -132,7 +132,7 @@ const Materials = () => {
                 .childImageSharp.fluid
             const links = <Link to={`/${edge.node.fields.slug}`}></Link>
 
-            // console.log(links.props.to, 'these are the links')
+            console.log(links.props.to, 'these are the links')
             if (links.props.to === '/aluminum/wood') {
               return (
                 <li>
@@ -146,7 +146,7 @@ const Materials = () => {
             if (links.props.to === '/aluminum-clad-wood') {
               return (
                 <li>
-                  <Link to="/offer">
+                  <Link to="/products/wood-products">
                     <SetImg fluid={images} />
                     <h2>{edge.node.title}</h2>
                   </Link>
@@ -167,6 +167,16 @@ const Materials = () => {
               return (
                 <li>
                   <Link to="/materials-fiberglass">
+                    <SetImg fluid={images} />
+                    <h2>{edge.node.title}</h2>
+                  </Link>
+                </li>
+              )
+            }
+            if (links.props.to === '/the-warmth-&-beauty-of-wood') {
+              return (
+                <li>
+                  <Link to="/products/wood-products">
                     <SetImg fluid={images} />
                     <h2>{edge.node.title}</h2>
                   </Link>
