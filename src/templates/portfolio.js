@@ -8,13 +8,16 @@ import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     nodeBlog(fields: { slug: { eq: $slug } }) {
       title
       body {
         value
       }
-      created
+      field_link {
+        uri
+        title
+      }
       relationships {
         field_blog_image {
           localFile {
@@ -30,12 +33,13 @@ export const query = graphql`
   }
 `
 const Blog = ({ data }) => {
-  console.log(data.nodeBlog, 'loop through images')
   const post = data.nodeBlog
-  // const image =
-  //   data.nodeBlog.relationships.field_blog_image[0]?.localFile?.childImageSharp
-  //     ?.fluid
-  // console.log(image, 'hreer is the image')
+  const youtubeLink = data.nodeBlog.field_link[0]?.uri
+  const image =
+    data.nodeBlog.relationships.field_blog_image[1]?.localFile?.childImageSharp
+      ?.fluid
+
+  console.log(image)
   return (
     <Layout>
       <Head title={data.nodeBlog.title} />
@@ -47,16 +51,23 @@ const Blog = ({ data }) => {
         infiniteLoop={true}
         dynamicHeight={true}
       >
-        {data.nodeBlog.relationships.field_blog_image.map(image => {
-          const about = data.nodeBlog.body.value
+        {youtubeLink ? (
+          <VideoContainer>
+            <iframe src={youtubeLink}></iframe>
+          </VideoContainer>
+        ) : (
+          <Img fluid={image} />
+        )}
+        {data.nodeBlog.relationships.field_blog_image.map((image) => {
+          const youtubeLink = data.nodeBlog.field_link[0]?.uri
 
-          // console.log(image, 'get the image here')
           const portfolioImages = image.localFile?.childImageSharp?.fluid
           return (
             <div>
               {portfolioImages ? (
                 <div>
                   <Img fluid={portfolioImages} />
+
                   <p className="legend">{data.nodeBlog.title} </p>
                 </div>
               ) : null}
@@ -67,5 +78,23 @@ const Blog = ({ data }) => {
     </Layout>
   )
 }
+
+const VideoContainer = styled.div`
+  position: relative;
+  overflow: hidden;
+
+  padding-top: 80.25%;
+
+  iframe {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 250px;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+`
 
 export default Blog
