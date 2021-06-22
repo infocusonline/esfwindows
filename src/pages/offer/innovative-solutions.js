@@ -37,13 +37,13 @@ const InnovativeSolutions = () => {
   return (
     <Layout>
       <FlexContainer>
-        {data.allNodeInnovativeSolutionsSubitems.edges.map(edge => {
+        {data.allNodeInnovativeSolutionsSubitems.edges.map((edge) => {
           const images =
             edge.node.relationships.field_innovative_sol_image[0].localFile
               .childImageSharp.fixed
           return (
             <li>
-              <Link to={`innovative-solutions/${edge.node.fields.slug}`}>
+              <Link to={`/innovative-solutions/${edge.node.fields.slug}`}>
                 <SetImg fixed={images} />
                 <h2>{edge.node.title}</h2>
               </Link>

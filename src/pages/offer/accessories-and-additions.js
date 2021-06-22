@@ -63,13 +63,14 @@ const AccessoriesAdditions = () => {
       <Bio dangerouslySetInnerHTML={{ __html: pageBio }}></Bio>
 
       <FlexContainer>
-        {data.allNodeAccessoriesAndAdditions.edges.map(edge => {
+        {data.allNodeAccessoriesAndAdditions.edges.map((edge) => {
           const accessoriesAdditionImges =
             edge.node.relationships.field_accessories_doors_image[0].localFile
               .childImageSharp.fixed
           return (
             <li key={edge.node.title}>
-              <Link to={`/offer/${edge.node.path.alias}`}>
+              {/* no slash need after offer bcause it is already added on drupal alias */}
+              <Link to={`/offer${edge.node.path.alias}`}>
                 <SetImg fixed={accessoriesAdditionImges} />
                 <h2>{edge.node.title}</h2>
               </Link>
