@@ -64,7 +64,7 @@ const Window = () => {
       </Container>
       <Bio dangerouslySetInnerHTML={{ __html: pvcOfferBio }}></Bio>
       <FlexContainer>
-        {data.allNodePvcOfferSchucoWindows.edges.map(edge => {
+        {data.allNodePvcOfferSchucoWindows.edges.map((edge) => {
           const pvcSchucoImages =
             edge.node.relationships.field_schuco_windows_image[0].localFile
               .childImageSharp.fixed

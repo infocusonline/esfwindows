@@ -59,19 +59,19 @@ const PvcOffer = () => {
       </Container>
       <Bio dangerouslySetInnerHTML={{ __html: about }}></Bio>
       <FlexContainer>
-        {data.allNodePvcOfferSubItems.edges.map(edge => {
+        {data.allNodePvcOfferSubItems.edges.map((edge) => {
           const images =
             edge.node.relationships.field_pvc_offer_subitems_image[0].localFile
               ?.childImageSharp?.fluid
           return (
             <li>
               {images ? (
-                <Link to={`/${edge.node.path.alias}`}>
+                <Link to={`${edge.node.path.alias}`}>
                   <SetImg fluid={images} />
                   <h2>{edge.node.title}</h2>
                 </Link>
               ) : (
-                <Link to={`/${edge.node.path.alias}`}>
+                <Link to={`${edge.node.path.alias}`}>
                   <h2>{edge.node.title}</h2>
                 </Link>
               )}

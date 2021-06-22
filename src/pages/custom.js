@@ -72,9 +72,10 @@ const Custom = () => {
           showArrows={true}
           infiniteLoop={true}
           dynamicHeight={true}
+          stoponHover={true}
         >
           {data.customBasicPage.relationships.field_basic_page_image.map(
-            image => {
+            (image) => {
               const customImages = image.localFile?.childImageSharp?.fluid
 
               return (
@@ -87,7 +88,7 @@ const Custom = () => {
         </Carousel>
         <About>
           <h1>{title}</h1>
-          <p dangerouslySetInnerHTML={{ __html: body }}></p>
+          <div dangerouslySetInnerHTML={{ __html: body }}></div>
         </About>
       </Layout>
     </>

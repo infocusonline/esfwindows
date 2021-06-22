@@ -68,7 +68,7 @@ const OfferPage = () => {
       {about ? <Bio dangerouslySetInnerHTML={{ __html: about }}></Bio> : null}
 
       <FlexContainer>
-        {data.allNodeOfferType.edges.map(edge => {
+        {data.allNodeOfferType.edges.map((edge) => {
           const images =
             edge.node.relationships.field_offer_type_image[0].localFile
               .childImageSharp.fluid

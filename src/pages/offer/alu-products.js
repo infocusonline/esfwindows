@@ -65,14 +65,14 @@ const AluOffer = () => {
       <Bio dangerouslySetInnerHTML={{ __html: aluOfferBio }}></Bio>
 
       <FlexContainer>
-        {data.allNodeAluOfferSubItems.edges.map(edge => {
+        {data.allNodeAluOfferSubItems.edges.map((edge) => {
           const images =
             edge.node.relationships.field_alu_offer_sub_items_image.localFile
               .childImageSharp.fluid
 
           return (
             <li key={edge.node.id}>
-              <Link to={`/${edge.node.path.alias}`}>
+              <Link to={`${edge.node.path.alias}`}>
                 <SetImg fluid={images} />
                 <h2>{edge.node.title}</h2>
               </Link>
