@@ -25,17 +25,15 @@ export const query = graphql`
 
 const Product = ({ data }) => {
   const image =
-    data.nodeProducts.relationships.field_products_images[0]?.localFile
-      ?.childImageSharp.fluid
+    data.nodeProducts.relationships.field_products_images[0].localFile
+      .childImageSharp.fluid
   return (
     <Layout>
-      {image ? (
-        <div>
-          <Img fluid={image} />
-          <h1>products</h1>
-          <Form />
-        </div>
-      ) : null}
+      <Img fluid={image} />
+
+      <h1>products</h1>
+
+      <Form />
     </Layout>
   )
 }

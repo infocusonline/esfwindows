@@ -40,9 +40,7 @@ const Blog = () => {
         {data.allNodeBlog.edges.map(edge => {
           const date = edge.node.created
           const title = edge.node.title
-          const blogImage =
-            edge.node.relationships.field_blog_image[0]?.localFile
-              ?.childImageSharp?.fixed
+          const blogImage = edge.node.relationships.field_blog_image[0]?.localFile?.childImageSharp?.fixed
           return (
             <li key={edge.node.id}>
               <Link to={`/portfolio/${edge.node.fields.slug}`}>

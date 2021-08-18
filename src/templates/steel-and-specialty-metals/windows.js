@@ -67,12 +67,10 @@ const FlexContainer = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
   }
-
   .flex li {
     list-style-type: none;
     margin: 0 auto;
   }
-
   p {
     text-align: center;
     width: 120px;

@@ -97,10 +97,8 @@ const About = styled.div`
   h1 {
     margin-top: 4rem;
     padding-top: 1.4rem;
-
     text-align: center;
   }
-
   p {
     line-height: 1.6;
     text-align: center;
@@ -113,7 +111,6 @@ const Container = styled.div`
   margin-top: 90px;
   /* height: 500px; */
   margin-bottom: 80px;
-
   h1 {
     margin-top: 90px;
     padding-left: 30px;
@@ -145,12 +142,10 @@ const FlexContainer = styled.ul`
   justify-content: center;
   padding: 0.6rem;
   margin: 90px;
-
   li {
     list-style-type: none;
     padding: 10px;
   }
-
   h2 {
     color: #2d385b;
     font-size: 20px;
@@ -161,7 +156,6 @@ const FlexContainer = styled.ul`
     border-bottom: solid 1px blue;
     width: 190px;
   }
-
   a {
     text-decoration: none;
     color: #000000;

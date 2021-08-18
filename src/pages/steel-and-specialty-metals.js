@@ -1,10 +1,10 @@
 import React from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { useStaticQuery, Link, graphql } from 'gatsby'
 import styled from 'styled-components'
+import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 
-const SteelSpecialtyMetals = () => {
+const SteelSpecialMetals = () => {
   const data = useStaticQuery(graphql`
     query {
       nodeMaterials(id: { eq: "a9206b99-2e45-50af-b63e-bebd660051a0" }) {
@@ -16,7 +16,11 @@ const SteelSpecialtyMetals = () => {
           field_materials_images {
             localFile {
               childImageSharp {
+<<<<<<< HEAD
                 fluid(maxWidth: 1200, maxHeight: 900) {
+=======
+                fluid(maxWidth: 1575, maxHeight: 700) {
+>>>>>>> 204c3d1a2b608cd805bc4c00a5bebc4fbfef700a
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -24,7 +28,11 @@ const SteelSpecialtyMetals = () => {
           }
         }
       }
+<<<<<<< HEAD
       allNodeSteelAndSpecialityMetals(sort: { fields: title, order: DESC }) {
+=======
+      allNodeSteelAndSpecialityMetals {
+>>>>>>> 204c3d1a2b608cd805bc4c00a5bebc4fbfef700a
         edges {
           node {
             id
@@ -51,13 +59,21 @@ const SteelSpecialtyMetals = () => {
       }
     }
   `)
+<<<<<<< HEAD
   const heroImage =
     data.nodeMaterials.relationships.field_materials_images?.[0].localFile
       ?.childImageSharp.fluid
   const bio = data.nodeMaterials.body.value
+=======
+>>>>>>> 204c3d1a2b608cd805bc4c00a5bebc4fbfef700a
 
+  const heroImage =
+    data.nodeMaterials.relationships.field_materials_images[0]?.localFile
+      .childImageSharp.fluid
+  // console.log(data.allNodeSteelAndSpecialityMetals, 'grab image')
   return (
     <Layout>
+<<<<<<< HEAD
       <Container>
         <ContainerImg fluid={heroImage} />
       </Container>
@@ -85,6 +101,26 @@ const SteelSpecialtyMetals = () => {
             <li>
               <Link to={`/steel-and-specialty-metals/${edge.node.fields.slug}`}>
                 <SetImg fixed={images} />
+=======
+      <About>
+        <Img fluid={heroImage} />
+        <h1>{data.nodeMaterials.title}</h1>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: data.nodeMaterials.body.value,
+          }}
+        ></div>
+      </About>
+      <FlexContainer>
+        {data.allNodeSteelAndSpecialityMetals.edges.map(edge => {
+          const image =
+            edge.node.relationships.field_steel_and_special_metal?.[0].localFile
+              .childImageSharp.fixed
+          return (
+            <li key={edge.node.id}>
+              <Link to={`/steel-and-specialty-metals/${edge.node.fields.slug}`}>
+                <SetImg fixed={image} />
+>>>>>>> 204c3d1a2b608cd805bc4c00a5bebc4fbfef700a
                 <h2>{edge.node.title}</h2>
               </Link>
             </li>
@@ -100,10 +136,14 @@ const About = styled.div`
   width: 95%;
   padding: 20px;
   h1 {
+<<<<<<< HEAD
     margin-top: 1rem;
     margin-bottom: 2rem;
     padding-top: 1rem;
 
+=======
+    padding-top: 1.4rem;
+>>>>>>> 204c3d1a2b608cd805bc4c00a5bebc4fbfef700a
     text-align: center;
   }
   p {
@@ -113,49 +153,16 @@ const About = styled.div`
   }
 `
 
-const Container = styled.div`
-  display: flex;
-  margin-top: 90px;
-  /* height: 500px; */
-  margin-bottom: 80px;
-
-  h1 {
-    margin-top: 90px;
-    padding-left: 30px;
-    margin-left: 20px;
-    font-size: 50px;
-  }
-`
-
-const ContainerImg = styled(Img)`
-  margin-left: auto;
-  order: 2;
-  width: 980px;
-  height: 22vw;
-  clip-path: polygon(10vw 0, 100% 0, 100% 100%, 0% 100%);
-`
-
-const Bio = styled.div`
-  margin: 0 auto;
-  max-width: 1080px;
-  font-size: 1.1rem;
-  line-height: 1.8rem;
-  text-align: center;
-`
-
 const FlexContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   /* flex-direction: row-reverse; */
   justify-content: center;
-  padding: 0.6rem;
   margin: 90px;
-
   li {
     list-style-type: none;
     padding: 10px;
   }
-
   h2 {
     color: #2d385b;
     font-size: 20px;
@@ -166,7 +173,6 @@ const FlexContainer = styled.ul`
     border-bottom: solid 1px blue;
     width: 190px;
   }
-
   a {
     text-decoration: none;
     color: #000000;
@@ -175,9 +181,10 @@ const FlexContainer = styled.ul`
 
 const SetImg = styled(Img)`
   display: block !important;
+  margin: 6px;
   flex-grow: 1;
-  padding: 149px;
-  /* border: 1px solid red; */
+  width: 330px;
+  border-radius: 2%;
 `
 
-export default SteelSpecialtyMetals
+export default SteelSpecialMetals
