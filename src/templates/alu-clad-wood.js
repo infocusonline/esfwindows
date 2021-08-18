@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     nodeAlucladWoodSubItems(fields: { slug: { eq: $slug } }) {
       id
       title
@@ -34,7 +34,7 @@ export const query = graphql`
     }
   }
 `
-
+// adding to git
 const AluronWood = ({ data }) => {
   const body = data.nodeAlucladWoodSubItems.body.value
   return (
