@@ -61,7 +61,7 @@ const AluOptions = () => {
     <Layout>
       <Container>
         <h1>{data.nodeOfferType2.title}</h1>
-        <ContainerImg fixed={heroImage} />.
+        <ContainerImg fixed={heroImage} />
       </Container>
       <Bio dangerouslySetInnerHTML={{ __html: about }}></Bio>
 

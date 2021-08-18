@@ -43,7 +43,6 @@ const Blog = ({ data }) => {
   console.log(image)
   return (
     <Layout>
-<<<<<<< HEAD
       <Head title={data.nodeBlog.title} />
       <Carousel
         autoPlay
@@ -77,18 +76,6 @@ const Blog = ({ data }) => {
           )
         })}
       </Carousel>
-=======
-      <PortfolioLayout>
-        <Head title={data.nodeBlog.title} />
-        <h1>{data.nodeBlog.title}</h1>
-        {image ? (
-          <div>
-            <Img fluid={image} />
-            <div dangerouslySetInnerHTML={{ __html: post.body.value }}></div>
-          </div>
-        ) : null}
-      </PortfolioLayout>
->>>>>>> 204c3d1a2b608cd805bc4c00a5bebc4fbfef700a
     </Layout>
   )
 }
@@ -99,7 +86,6 @@ const VideoContainer = styled.div`
 
   padding-top: 80.25%;
 
-<<<<<<< HEAD
   iframe {
     border: none;
     position: absolute;
@@ -109,12 +95,6 @@ const VideoContainer = styled.div`
     right: 0;
     width: 100%;
     height: 100%;
-=======
-  p {
-    line-height: 1.5;
-    padding-top: 40px;
-    margin-bottom: 30px;
->>>>>>> 204c3d1a2b608cd805bc4c00a5bebc4fbfef700a
   }
 `
 
