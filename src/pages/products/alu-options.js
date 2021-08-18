@@ -61,7 +61,7 @@ const AluOptions = () => {
     <Layout>
       <Container>
         <h1>{data.nodeOfferType2.title}</h1>
-        <ContainerImg fixed={heroImage} />
+        <ContainerImg fixed={heroImage} />.
       </Container>
       <Bio dangerouslySetInnerHTML={{ __html: about }}></Bio>
 
@@ -75,7 +75,6 @@ const AluOptions = () => {
               <li>
                 <Link to={`/products${edge.node.path.alias}`}>
                   <SetImg fluid={images} />
-                  <h2>click me</h2>
                   <h2>{edge.node.title}</h2>
                 </Link>
               </li>
