@@ -79,7 +79,7 @@ const WoodProducts = () => {
       </About>
 
       <FlexContainer>
-        {data.allNodeOfferType2.edges.map(edge => {
+        {data.allNodeOfferType2.edges.map((edge) => {
           const images =
             edge.node.relationships.field_offer_type_2_image[0]?.localFile
               ?.childImageSharp.fluid

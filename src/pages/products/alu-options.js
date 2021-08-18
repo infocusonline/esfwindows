@@ -66,15 +66,16 @@ const AluOptions = () => {
       <Bio dangerouslySetInnerHTML={{ __html: about }}></Bio>
 
       <FlexContainer>
-        {data.allNodeAlucladType.edges.map(edge => {
+        {data.allNodeAlucladType.edges.map((edge) => {
           const images =
             edge.node.relationships.field_aluclad_type_image[0]?.localFile
               ?.childImageSharp?.fluid
           return (
             <div>
               <li>
-                <Link to={`/products/${edge.node.path.alias}`}>
+                <Link to={`/products${edge.node.path.alias}`}>
                   <SetImg fluid={images} />
+                  <h2>click me</h2>
                   <h2>{edge.node.title}</h2>
                 </Link>
               </li>
